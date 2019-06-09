@@ -7,6 +7,7 @@ from models.combine_image import CombineImage
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_DIR = ROOT_DIR + "/input/"
+SHAPES_DIR = ROOT_DIR + "/shapes/"
 
 def main():
     img = Image.open("/home/ebubekirtabak/projects/python-projects/image-multiplexer/input/1.jpg")
@@ -29,7 +30,8 @@ def image_combainer(images):
             xml_data = parse(datasource)
             combine_image = CombineImage(path=INPUT_DIR, name=image, xml=xml_data)
             combine_image_list.append(combine_image)
-            ImageCreator().create_random_image()
+            shapes = get_shapes()
+            ImageCreator(shapes, SHAPES_DIR).create_random_image()
             print(name)
 
 def get_images():
